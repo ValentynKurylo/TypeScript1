@@ -52,8 +52,8 @@ class Party{
         this.deputies.map(value => strong += value.position)
         return strong
     }
-    public addDeputy(deputy : Deputy){
-        return this.deputies.push(deputy)
+    public addDeputy(deputy : Deputy):void{
+        this.deputies.push(deputy)
     }
     public deleteDeputy(deputy:Deputy):Array<Deputy>{
         let index = this.deputies.indexOf(deputy)
@@ -86,8 +86,8 @@ class VerhovnaRada{
         this.parties = parties
         this.spiker = spiker
     }
-   public addParty(party: Party){
-       return  this.parties.push(party)
+   public addParty(party: Party): void{
+         this.parties.push(party)
     }
     public deleteParty(party: Party):Array<Party>{
         let index = this.parties.indexOf(party)
