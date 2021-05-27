@@ -7,11 +7,11 @@ class Deputy{
     name: string
     surname: string
     age: number
-    gender : string
+    gender : EGender
     position: number
     degreeOfHonesty : number
 
-    constructor(name: string, surname: string, age: number, gender: string, position: number, degreeOfHonesty: number) {
+    constructor(name: string, surname: string, age: number, gender: EGender, position: number, degreeOfHonesty: number) {
         this.name = name
         this.surname = surname
         this.age = age
@@ -55,7 +55,7 @@ class Party{
     public addDeputy(deputy : Deputy){
         return this.deputies.push(deputy)
     }
-    public deleteDeputy(deputy:Deputy){
+    public deleteDeputy(deputy:Deputy):Array<Deputy>{
         let index = this.deputies.indexOf(deputy)
         return this.deputies.splice(index, 1)
     }
@@ -73,7 +73,7 @@ class Party{
             }
         })
     }
-    public showDeputies(){
+    public showDeputies():void{
         console.log(this.deputies);
     }
 
@@ -89,11 +89,11 @@ class VerhovnaRada{
    public addParty(party: Party){
        return  this.parties.push(party)
     }
-    public deleteParty(party: Party){
+    public deleteParty(party: Party):Array<Party>{
         let index = this.parties.indexOf(party)
         return this.parties.splice(index, 1)
     }
-    private deleteAllParties(){
+    private deleteAllParties():Array<Party>{
         return this.parties = []
     }
     public showAllPartis(): void{
@@ -131,13 +131,13 @@ class VerhovnaRada{
         })
     }
 }
-let deputyValentyn = new Deputy('Valentyn', 'Kurylo', 19, 'man', 99, 98)
-let deputyOlga = new Deputy('Olga', 'Ivanchuk', 24, 'woman', 70, 80 )
-let deputySasha = new Deputy('Sasha', 'Bezyk', 16, 'man', 90, 90)
-let deputyIvan = new Deputy('Ivan', 'Ivaniv', 19, 'man', 50, 49)
-let deputyVika = new Deputy('Vika', 'Vaskiv', 18, 'woman', 50, 77)
-let deputyChristina = new Deputy('Christina', 'Hordun', 18, 'woamn', 33, 40)
-let deputyMaria = new Deputy('Maria', 'Gaiduk', 20, 'woman', 40, 35)
+let deputyValentyn = new Deputy('Valentyn', 'Kurylo', 19, EGender.MALE, 99, 98)
+let deputyOlga = new Deputy('Olga', 'Ivanchuk', 24, EGender.FEMALE, 70, 80 )
+let deputySasha = new Deputy('Sasha', 'Bezyk', 16, EGender.MALE, 90, 90)
+let deputyIvan = new Deputy('Ivan', 'Ivaniv', 19, EGender.MALE, 50, 49)
+let deputyVika = new Deputy('Vika', 'Vaskiv', 18, EGender.FEMALE, 50, 77)
+let deputyChristina = new Deputy('Christina', 'Hordun', 18, EGender.FEMALE, 33, 40)
+let deputyMaria = new Deputy('Maria', 'Gaiduk', 20, EGender.FEMALE, 40, 35)
 let freedom = new Party('freedom', deputyValentyn,[deputyValentyn, deputySasha])
 let Ukrain = new Party('Ukrain', deputyOlga, [deputyOlga, deputyChristina, deputyMaria])
 let Orange = new Party('Orange', deputyIvan, [deputyIvan, deputyVika])
@@ -150,5 +150,7 @@ let c = deputyIvan.giveHabar(1100)
 console.log(a);
 console.log(b);
 console.log(c);
+rada.deleteParty(Orange)
+rada.showAllPartis()
 
 
